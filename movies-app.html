@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating App</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #movie-info {
+            display: inline-block;
+            margin: 10px 10px 10px 20px;
+        }
+
+        .movie-instance {
+            background-color: rgb(145, 156, 161);
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .bolded {
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="" method="post">
+        <div style="margin: 20px">
+            <label for="movie">Enter your movie here:</label>
+            <input type="text" id="movie-name" name="movie" required minlength="2" maxlength="30" size="30">
+        </div>
+        <div style="margin: 20px">
+            <label for="rating">Enter your rating here, please (1-10):</label>
+            <input type="text" id="movie-rating" name="rating" required minlength="1" maxlength="5" size="5">
+        </div>
+        <button id="movie-button" style="margin: 20px">Submit!</button>
+    </form>
+    <div id="movie-info">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+
+        $('#movie-button').on("click", function (event) {
+            event.preventDefault();
+            const movie = $('#movie-name').val()
+            const rating = $('#movie-rating').val()
+            $('#movie-info').append(`<div class="movie-instance"> <p><span class="bolded">Movie Name: </span>${movie}</p> <p><span class="bolded">Movie Rating: </span>${rating}</p> <button>Remove Me</button> </div>`)
+            $('#movie-name').val('')
+            $('#movie-rating').val('')
+        })
+
+        $('#movie-info').on("click", 'button', function (event) {
+            event.preventDefault();
+            $(this).parent().remove()
+
+        })
+
+    </script>
+</body>
+
+</html>
